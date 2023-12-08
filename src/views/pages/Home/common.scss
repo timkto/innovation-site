@@ -1,0 +1,136 @@
+.didc-container {
+  background: #fff7f1;
+  font-size: 21px;
+  font-family: FWDCircularWeb Book;
+  line-height: 120%;
+}
+
+.block-container {
+  max-width: 1280px;
+  margin: auto;
+  padding: 50px 0;
+}
+
+.center-content {
+  width: 80%;
+  margin: auto;
+}
+
+.black {
+  color: #183028;
+}
+
+.white {
+  color: #fff;
+}
+
+.orange {
+  color: #e87722;
+}
+
+.bg-black {
+  background: #183028;
+}
+
+.bg-white {
+  background: #fff;
+}
+
+.bg-orange {
+  background: #e87722;
+}
+
+.header {
+  font-size: 48px;
+  font-family: FWDCircularWeb Black;
+  line-height: 120%;
+}
+
+.header2 {
+  font-size: 28px;
+  margin-bottom: 35px;
+}
+
+.line-spacing {
+  margin-bottom: 25px;
+}
+
+@font-face {
+  font-family: 'FWDCircularWeb Book';
+  src: url('../../assets/fonts/FWDCircularWeb-Book.eot?#iefix');
+  src: url('../../assets/fonts/FWDCircularWeb-Book.eot?#iefix') format('eot'),
+    url('../../assets/fonts/FWDCircularWeb-Book.woff2') format('woff2'),
+    url('../../assets/fonts/FWDCircularWeb-Book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FWDCircularWeb Book Italic';
+  src: url('../../assets/fonts/FWDCircularWeb-BookItalic.eot?#iefix');
+  src: url('../../assets/fonts/FWDCircularWeb-BookItalic.eot?#iefix') format('eot'),
+    url('../../assets/fonts/FWDCircularWeb-BookItalic.woff2') format('woff2'),
+    url('../../assets/fonts/FWDCircularWeb-BookItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FWDCircularWeb Medium';
+  src: url('../../assets/fonts/FWDCircularWeb-Medium.eot?#iefix');
+  src: url('../../assets/fonts/FWDCircularWeb-Medium.eot?#iefix') format('eot'),
+    url('../../assets/fonts/FWDCircularWeb-Medium.woff2') format('woff2'),
+    url('../../assets/fonts/FWDCircularWeb-Medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FWDCircularWeb Medium Italic';
+  src: url('../../assets/fonts/FWDCircularWeb-MediumItalic.eot?#iefix');
+  src: url('../../assets/fonts/FWDCircularWeb-MediumItalic.eot?#iefix') format('eot'),
+    url('../../assets/fonts/FWDCircularWeb-MediumItalic.woff2') format('woff2'),
+    url('../../assets/fonts/FWDCircularWeb-MediumItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FWDCircularWeb Bold';
+  src: url('../../assets/fonts/FWDCircularWeb-Bold.eot?#iefix');
+  src: url('../../assets/fonts/FWDCircularWeb-Bold.eot?#iefix') format('eot'),
+    url('../../assets/fonts/FWDCircularWeb-Bold.woff2') format('woff2'),
+    url('../../assets/fonts/FWDCircularWeb-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FWDCircularWeb Bold Italic';
+  src: url('../../assets/fonts/FWDCircularWeb-BoldItalic.eot?#iefix');
+  src: url('../../assets/fonts/FWDCircularWeb-BoldItalic.eot?#iefix') format('eot'),
+    url('../../assets/fonts/FWDCircularWeb-BoldItalic.woff2') format('woff2'),
+    url('../../assets/fonts/FWDCircularWeb-BoldItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FWDCircularWeb Black';
+  src: url('../../assets/fonts/FWDCircularWeb-Black.eot?#iefix');
+  src: url('../../assets/fonts/FWDCircularWeb-Black.eot?#iefix') format('eot'),
+    url('../../assets/fonts/FWDCircularWeb-Black.woff2') format('woff2'),
+    url('../../assets/fonts/FWDCircularWeb-Black.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FWDCircularWeb Black Italic';
+  src: url('../../assets/fonts/FWDCircularWeb-BlackItalic.eot?#iefix');
+  src: url('../../assets/fonts/FWDCircularWeb-BlackItalic.eot?#iefix') format('eot'),
+    url('../../assets/fonts/FWDCircularWeb-BlackItalic.woff2') format('woff2'),
+    url('../../assets/fonts/FWDCircularWeb-BlackItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

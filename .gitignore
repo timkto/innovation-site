@@ -1,0 +1,34 @@
+# Configurations
+.env
+.env.test
+.env.dev
+
+# Go Environment
+tmp/
+vendor/
+__debug_bin
+debug.test
+
+# Node environment
+.cache.json
+node_modules
+.tm
+dist/
+
+# Misc
+.DS_Store
+._*
+Thumbs.db
+.cache
+.settings
+.tmproj
+*.diff
+*.err
+*.log
+*.vi
+*~
+.#*
+coverage/
+
+# Docker Ignore
+.git

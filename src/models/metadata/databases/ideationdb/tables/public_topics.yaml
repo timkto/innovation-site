@@ -1,0 +1,72 @@
+table:
+  name: topics
+  schema: public
+object_relationships:
+- name: author_details
+  using:
+    foreign_key_constraint_on: author
+array_relationships:
+- name: topics_users_comments_associations
+  using:
+    foreign_key_constraint_on:
+      column: topics_pk
+      table:
+        name: topics_users_comments_association
+        schema: public
+- name: topics_users_likes_associations
+  using:
+    foreign_key_constraint_on:
+      column: topics_pk
+      table:
+        name: topics_users_likes_association
+        schema: public
+insert_permissions:
+- permission:
+    backend_only: false
+    check:
+      author:
+        _eq: X-Hasura-User-Id
+    columns:
+    - author
+    - category
+    - department
+    - description
+    - link
+    - short_description
+    - status
+    - title
+  role: user
+select_permissions:
+- permission:
+    allow_aggregations: true
+    columns:
+    - category
+    - department
+    - status
+    - author
+    - description
+    - link
+    - short_description
+    - title
+    - created_at
+    - updated_at
+    - id
+    filter: {}
+  role: user
+update_permissions:
+- permission:
+    check:
+      author:
+        _eq: X-Hasura-User-Id
+    columns:
+    - status
+    filter:
+      author:
+        _eq: X-Hasura-User-Id
+  role: user
+delete_permissions:
+- permission:
+    filter:
+      author:
+        _eq: X-Hasura-User-Id
+  role: user

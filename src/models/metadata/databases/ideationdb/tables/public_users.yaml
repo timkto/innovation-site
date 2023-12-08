@@ -1,0 +1,57 @@
+table:
+  name: users
+  schema: public
+array_relationships:
+- name: topics
+  using:
+    foreign_key_constraint_on:
+      column: author
+      table:
+        name: topics
+        schema: public
+- name: topics_users_comments_associations
+  using:
+    foreign_key_constraint_on:
+      column: users_pk
+      table:
+        name: topics_users_comments_association
+        schema: public
+- name: topics_users_likes_associations
+  using:
+    foreign_key_constraint_on:
+      column: users_pk
+      table:
+        name: topics_users_likes_association
+        schema: public
+insert_permissions:
+- permission:
+    backend_only: false
+    check:
+      id:
+        _eq: X-Hasura-User-Id
+    columns:
+    - email
+    - id
+    - name
+  role: user
+select_permissions:
+- permission:
+    allow_aggregations: true
+    columns:
+    - id
+    - name
+    - email
+    filter: {}
+  role: user
+update_permissions:
+- permission:
+    check:
+      id:
+        _eq: X-Hasura-User-Id
+    columns:
+    - email
+    - name
+    filter:
+      id:
+        _eq: X-Hasura-User-Id
+  role: user

@@ -1,0 +1,113 @@
+div.carousel-inner .carousel-item img {
+  height: 500px;
+  object-fit: cover;
+}
+
+.iaf-body > div {
+  margin-bottom: 25px;
+}
+
+.springboard-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.springboard-left {
+  width: 30%;
+  text-align: left;
+}
+
+.springboard-right {
+  width: 60%;
+  color: #e87722;
+  text-align: justify;
+}
+
+.springboard-right > div {
+  margin-bottom: 25px;
+}
+
+.hoi-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hoi-image {
+  width: 30%;
+}
+
+.hoi-image img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.hoi-content {
+  width: 60%;
+  text-align: justify;
+}
+
+.hoi-content > div {
+  margin-bottom: 25px;
+}
+
+.innovation-champions,
+.startup-studio {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ic-image,
+.ss-image {
+  position: relative;
+  width: 28%;
+  height: 600px;
+}
+
+.ic-image img {
+  top: -80px;
+}
+
+.ss-image img {
+  bottom: -80px;
+}
+
+.ic-image img,
+.ss-image img {
+  position: absolute;
+  width: 100%;
+  height: 622px;
+  object-fit: cover;
+  border-radius: 35vh;
+}
+
+.ic-context {
+  padding-top: 100px;
+}
+
+.ic-context,
+.ss-context {
+  width: 60%;
+}
+
+.ss-findoutmore {
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+.ss-findoutmore > a {
+  color: #fff;
+  border-radius: 10px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.3);
+  font-weight: normal;
+  padding: 15px 20px;
+  text-decoration: none;
+}
+
+.ss-findoutmore > a:hover {
+  color: #fff;
+}
