@@ -1,11 +1,5 @@
 import React, { useContext } from 'react';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
-import Badge from 'react-bootstrap/Badge';
-import Form from 'react-bootstrap/Form';
-import Card from 'react-bootstrap/Card';
+import { Container, Row, Col, Button, Badge, Form, Card, Image, Tabs, Tab, Stack } from 'react-bootstrap';
 import { Step, StepLabel, Stepper } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -98,46 +92,68 @@ const TopicDetails = (props: any) => {
                 ))}
               </Stepper>
             </Col>
-            <Col xs={12} className='m-auto max-width-960'>
-              <p className='mt-2 mb-3'>{topicData.topics_by_pk.description}</p>
-              {topicData.topics_by_pk.link && (
-                <Button className='btn-sm' style={{ padding: 0 }}>
-                  <a
-                    className='button-href'
-                    href={topicData.topics_by_pk.link}
-                    target='_blank'
-                    style={{ lineHeight: '30px', padding: '10px' }}>
-                    More Information {'  '}
-                    <svg
-                      xmlns='http://www.w3.org/2000/svg'
-                      height='16px'
-                      viewBox='0 2 24 24'
-                      width='16px'
-                      fill='#ffffff'>
-                      <path d='M0 0h24v24H0z' fill='none' />
-                      <path d='M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z' />
-                    </svg>
-                  </a>
-                </Button>
-              )}
-            </Col>
-            <Col xs={12} className='mb-3 m-auto max-width-960'>
-              <hr />
-              <Badge bg='primary' className='me-1'>
-                Category : {` ${getTopicCategoryById(topicData.topics_by_pk.category).name} `}
-              </Badge>
-              <Badge bg='success' className='me-1'>
-                Department : {` ${getTopicDepartmentById(topicData.topics_by_pk.department).name} `}
-              </Badge>
-              <Badge bg='danger' className='me-1'>
-                Author :{' '}
-                {` ${topicData.topics_by_pk.author_details.name} <${topicData.topics_by_pk.author_details.email}> `}
-              </Badge>
-              <Badge bg='info' className='me-1'>
-                Last updated :{' '}
-                {new Date(topicData.topics_by_pk.updated_at).toLocaleDateString('en-US', dateFormatOptions)}
-              </Badge>
-            </Col>
+            <Row className='m-auto max-width-fwd'>
+              <Col xs={4} className='mb-3'>
+                <Stack>
+                  <Image
+                    src='https://d35y6yt0mxh4p7.cloudfront.net/dev/img/innovation_champion.jfif'
+                    rounded
+                    fluid
+                  />
+                  <input type='file' accept='image/*' id='edit-idea-img' hidden />
+                  <label htmlFor='edit-idea-img'>Upload</label>
+                </Stack>
+
+                <Badge bg='primary' className='me-1'>
+                  Category : {` ${getTopicCategoryById(topicData.topics_by_pk.category).name} `}
+                </Badge>
+                <Badge bg='success' className='me-1'>
+                  Department : {` ${getTopicDepartmentById(topicData.topics_by_pk.department).name} `}
+                </Badge>
+                <Badge bg='danger' className='me-1'>
+                  Owner : {` ${topicData.topics_by_pk.author_details.name} `}
+                </Badge>
+                <Badge bg='info' className='me-1'>
+                  Last updated :{' '}
+                  {new Date(topicData.topics_by_pk.updated_at).toLocaleDateString('en-US', dateFormatOptions)}
+                </Badge>
+              </Col>
+
+              <Col xs={8} className='mb-3'>
+                <Tabs defaultActiveKey='description' id='uncontrolled-tab-example' className='mb-3'>
+                  <Tab eventKey='description' title='Description'>
+                    {topicData.topics_by_pk.description}
+                  </Tab>
+                  <Tab eventKey='attachments' title='Attachments'>
+                    Tab content for Profile
+                  </Tab>
+                  <Tab eventKey='contact' title='Contact' disabled>
+                    Tab content for Contact
+                  </Tab>
+                </Tabs>
+
+                {topicData.topics_by_pk.link && (
+                  <Button className='btn-sm' style={{ padding: 0 }}>
+                    <a
+                      className='button-href'
+                      href={topicData.topics_by_pk.link}
+                      target='_blank'
+                      style={{ lineHeight: '30px', padding: '10px' }}>
+                      More Information {'  '}
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        height='16px'
+                        viewBox='0 2 24 24'
+                        width='16px'
+                        fill='#ffffff'>
+                        <path d='M0 0h24v24H0z' fill='none' />
+                        <path d='M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z' />
+                      </svg>
+                    </a>
+                  </Button>
+                )}
+              </Col>
+            </Row>
           </ErrorBoundary>
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             <Col xs={12} className='mb-5 m-auto d-lg-inline-flex max-width-960'>

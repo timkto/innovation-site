@@ -14,53 +14,53 @@ const Navbar = () => {
   const { updatePageVisited } = UpdatePageVisited();
   useState(() => updatePageVisited());
 
+  const linkStyles = {
+    color: '#E87722',
+    fontFamily: 'FWDCircularWeb Medium',
+    fontSize: '18px',
+    textDecoration: 'none',
+    marginRight: '2em',
+  };
+
   return (
     <React.Fragment>
-      <BootstrapNav bg='light' expand='sm'>
+      <BootstrapNav bg='white' expand='sm'>
         <Container fluid>
           <BootstrapNav.Brand href='#'>
             <img
               alt='Logo for FWD Innovation'
               src='https://d35y6yt0mxh4p7.cloudfront.net/icons/FWDLogo.png'
-              style={{ height: '50px' }}
+              style={{ height: '90px' }}
             />
           </BootstrapNav.Brand>
           <BootstrapNav.Toggle aria-controls='navbar-toggle' />
           <BootstrapNav.Collapse id='navbar-toggle'>
-            <Link to={RouterPath.Home}>
-              <Button className='m-1 btn-sm' variant='primary'>
-                INNOVATION TEAM
-              </Button>
+            <Link to={RouterPath.Springboard} style={linkStyles}>
+              Springboard
             </Link>
-            <Link to={RouterPath.Home}>
-              <Button className='m-1 btn-sm' variant='primary'>
-                ABOUT
-              </Button>
+            <Link to={RouterPath.Home} style={linkStyles}>
+              Innovation Team
             </Link>
-            <Link to={RouterPath.Home}>
-              <Button className='m-1 btn-sm' variant='primary'>
-                IGNITE INNOVATION
-              </Button>
+            <Link to={RouterPath.Home} style={linkStyles}>
+              About
             </Link>
-            <Link to={RouterPath.Home}>
-              <Button className='m-1 btn-sm' variant='primary'>
-                CHAMPIONS & COMMUNITY
-              </Button>
+            <Link to={RouterPath.Home} style={linkStyles}>
+              Ignite Innovation
             </Link>
-            <Link to={RouterPath.Home}>
-              <Button className='m-1 btn-sm' variant='primary'>
-                RESOURCES
-              </Button>
+            <Link to={RouterPath.Home} style={linkStyles}>
+              Champions & Community
             </Link>
-            <Link to={RouterPath.Topic}>
-              <Button className='m-1 btn-sm' variant='primary'>
-                IDEAS
-              </Button>
+            <Link to={RouterPath.Home} style={linkStyles}>
+              Resources
             </Link>
-            <Link to={RouterPath.Reports}>
-              <Button className='m-1 btn-sm' variant='primary'>
-                REPORTS
-              </Button>
+            <Link to={RouterPath.InitiativeAdd} style={linkStyles}>
+              Initiative
+            </Link>
+            <Link to={RouterPath.Topic} style={linkStyles}>
+              Ideas
+            </Link>
+            <Link to={RouterPath.Reports} style={linkStyles}>
+              Reports
             </Link>
             <div style={{ flex: '1 1 auto' }}></div>
             {!auth.isReady && (

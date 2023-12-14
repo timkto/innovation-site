@@ -33,7 +33,7 @@ services:
       - db
     restart: always
     environment:
-      - HEROKU_DATABASE_URL=postgres://$DB_USER:$DB_PASS@db:5432/$DB_NAME
+      - HASURA_GRAPHQL_METADATA_DATABASE_URL=postgres://$DB_USER:$DB_PASS@db:5432/$DB_NAME
       - HASURA_GRAPHQL_ENABLE_CONSOLE=$DEBUG
       - HASURA_GRAPHQL_DEV_MODE=$DEBUG
     env_file:

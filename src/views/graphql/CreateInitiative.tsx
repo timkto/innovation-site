@@ -1,20 +1,18 @@
 import { gql, useMutation } from '@apollo/client';
 
-const CreateTopic = () => {
-  const createTopicQuery = gql`
-    mutation CreateTopic(
+const CreateInitiative = () => {
+  const createInitiativeQuery = gql`
+    mutation CreateInitiative(
+      $name: String!
+      $title: String!
+      $description: String!
       $category: Int!
       $department: Int!
-      $description: String!
-      $link: String
-      $short_description: String!
-      $title: String!
       $author_id: String!
       $author_name: String!
       $author_email: String!
-      $initiative: Int!
     ) {
-      insert_topics_one(
+      insert_initiative_one(
         object: {
           category: $category
           department: $department
@@ -23,10 +21,8 @@ const CreateTopic = () => {
             data: { id: $author_id, name: $author_name, email: $author_email }
             on_conflict: { constraint: users_pkey, update_columns: [name, email] }
           }
-          link: $link
-          short_description: $short_description
+          name: $name
           title: $title
-          initiative: $initiative
         }
       ) {
         id
@@ -34,10 +30,10 @@ const CreateTopic = () => {
     }
   `;
 
-  const [createTopic, { loading: createTopicLoading, error: createTopicError }] =
-    useMutation(createTopicQuery);
+  const [createInitiative, { loading: createInitiativeLoading, error: createInitiativeError }] =
+    useMutation(createInitiativeQuery);
 
-  return { createTopic, createTopicLoading, createTopicError };
+  return { createInitiative, createInitiativeLoading, createInitiativeError };
 };
 
-export default CreateTopic;
+export default CreateInitiative;

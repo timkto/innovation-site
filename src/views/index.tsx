@@ -12,6 +12,8 @@ import TopicDetails from './pages/Topic/TopicDetails';
 import Reports from './pages/Reports/Reports';
 import { RouterPath } from './enums/RouterPath';
 import './index.scss';
+import Springboard from './pages/Springboard/Springboard';
+import InitiativeAdd from './pages/Initiative/InitiativeAdd';
 
 const App = () => {
   return (
@@ -25,6 +27,8 @@ const App = () => {
             <Route path={RouterPath.Topic} component={Topic} />
             <Route path={RouterPath.Reports} component={Reports} />
             <Route exact path={RouterPath.Home} component={Home} />
+            <Route path={RouterPath.Springboard} component={Springboard} />
+            <Route path={RouterPath.InitiativeAdd} component={InitiativeAdd} />
           </Switch>
         </Router>
       </ApolloProvider>

@@ -42,7 +42,6 @@ const Topic = () => {
     departmentIdList: departmentFilter,
     statusIdList: statusFilter,
   } as IGetTopicCollectionInput);
-
   const filteredTopics = useMemo(() => {
     if (!topicsData?.topics?.length) return [];
     return searchFilter
@@ -103,7 +102,7 @@ const Topic = () => {
         onChangeCategory={setCategoryFilter}
         onChangeStatus={setStatusFilter}
       />
-      <Row className='max-width-960 mx-auto'>
+      <Row className='max-width-fwd mx-auto'>
         <Col xs={12} className='mb-5 p-0'>
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             <TopicsCollection topics={filteredTopics} />

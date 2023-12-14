@@ -15,26 +15,17 @@ import DiscardModal from '../../components/Popups/DiscardModal';
 import SectionLoader from '../../components/ContentState/SectionLoader';
 import ServerRequestError from '../../components/ContentState/ServerRequestError';
 import { ErrorFallback } from '../../components/ContentState/ErrorFallback';
-import CreateTopic from '../../graphql/CreateTopic';
+import CreateInitiative from '../../graphql/CreateInitiative';
 import { RouterPath } from '../../enums/RouterPath';
-import GetInitiatives from '../../graphql/GetInitiatives';
 
-const TopicAdd = () => {
+const InitiativeAdd = () => {
   const auth: IAuth = useContext(AuthContext);
   const history = useHistory();
   const [showDiscard, setShowDiscard] = useState(false);
   const [validated, setValidated] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const { createTopic, createTopicLoading, createTopicError } = CreateTopic();
-  const { data: initiativeData, error: initiativeError, loading: initiativeLoading } = GetInitiatives();
-
-  if (initiativeLoading) return <SectionLoader height='500px' width='100%' />;
-
-  if (initiativeError) {
-    console.error(initiativeError);
-    return <ServerRequestError height='500px' imgHeight='250px' width='100%' />;
-  }
+  const { createInitiative, createInitiativeLoading, createInitiativeError } = CreateInitiative();
 
   const handleAddFormSubmit = (event: any) => {
     event.preventDefault();
@@ -43,17 +34,15 @@ const TopicAdd = () => {
       event.stopPropagation();
     } else {
       setLoading(true);
-      const formShortDescription = form.elements.topicShortDescription.value
-        ? form.elements.topicShortDescription.value
-        : form.elements.topicDescription.value.substring(0, 240);
+      // const formShortDescription = form.elements.topicShortDescription.value
+      //   ? form.elements.topicShortDescription.value
+      //   : form.elements.topicDescription.value.substring(0, 240);
       const formValues = {
-        category: form.elements.topicCategory.value,
-        department: form.elements.topicDepartment.value,
-        description: form.elements.topicDescription.value,
-        link: form.elements.topicLink.value,
-        short_description: formShortDescription,
-        title: form.elements.topicTitle.value,
-        initiative: form.elements.topicInitiative.value,
+        name: form.elements.initiativeName.value,
+        title: form.elements.initiativeTitle.value,
+        description: form.elements.initiativeDescription.value,
+        category: form.elements.initiativeCategory.value,
+        department: form.elements.initiativeDepartment.value,
       };
       const userValues = {
         author_id: auth.user.id,
@@ -61,8 +50,8 @@ const TopicAdd = () => {
         author_email: auth.user.email,
       };
 
-      createTopic({ variables: { ...formValues, ...userValues } })
-        .then(_ => history.push(RouterPath.Topic))
+      createInitiative({ variables: { ...formValues, ...userValues } })
+        .then(_ => history.push(RouterPath.Reports))
         .catch(_ => {
           setLoading(false);
           setError(true);
@@ -71,10 +60,10 @@ const TopicAdd = () => {
     setValidated(true);
   };
 
-  if (loading || createTopicLoading) return <SectionLoader height='500px' width='100%' />;
+  if (loading || createInitiativeLoading) return <SectionLoader height='500px' width='100%' />;
 
-  if (error || createTopicError) {
-    console.error(error, createTopicError);
+  if (error || createInitiativeError) {
+    console.error(error, createInitiativeError);
     return <ServerRequestError height='500px' imgHeight='250px' width='100%' />;
   }
 
@@ -86,12 +75,24 @@ const TopicAdd = () => {
           <Row className='mt-4 max-width-960 mx-auto'>
             <Col>
               <Form
-                id='AddTopicForm'
+                id='AddInitiativeForm'
                 className='mb-5 pb-2'
                 noValidate
                 validated={validated}
                 onSubmit={handleAddFormSubmit}>
-                <Form.Group as={Row} className='mb-3' controlId='topicTitle'>
+                <Form.Group as={Row} className='mb-3' controlId='initiativeName'>
+                  <Form.Label column sm='2'>
+                    Name
+                  </Form.Label>
+                  <Col sm='10'>
+                    <Form.Control required placeholder='Enter name' />
+                    <Form.Control.Feedback type='invalid'>
+                      A name is required for creating a new idea or challenge.
+                    </Form.Control.Feedback>
+                  </Col>
+                </Form.Group>
+
+                <Form.Group as={Row} className='mb-3' controlId='initiativeTitle'>
                   <Form.Label column sm='2'>
                     Title
                   </Form.Label>
@@ -103,7 +104,7 @@ const TopicAdd = () => {
                   </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} className='mb-3' controlId='topicDescription'>
+                <Form.Group as={Row} className='mb-3' controlId='initiativeDescription'>
                   <Form.Label column sm='2'>
                     Description
                   </Form.Label>
@@ -120,7 +121,7 @@ const TopicAdd = () => {
                   </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} className='mb-3' controlId='topicCategory'>
+                <Form.Group as={Row} className='mb-3' controlId='initiativeCategory'>
                   <Form.Label column sm='2'>
                     Category
                   </Form.Label>
@@ -146,7 +147,7 @@ const TopicAdd = () => {
                   </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} className='mb-3' controlId='topicDepartment'>
+                <Form.Group as={Row} className='mb-3' controlId='initiativeDepartment'>
                   <Form.Label column sm='2'>
                     Department
                   </Form.Label>
@@ -166,7 +167,7 @@ const TopicAdd = () => {
                   </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} className='mb-3' controlId='topicLink'>
+                <Form.Group as={Row} className='mb-3' controlId='initiativeLink'>
                   <Form.Label column sm='2'>
                     Link
                   </Form.Label>
@@ -178,7 +179,7 @@ const TopicAdd = () => {
                   </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} className='mb-3' controlId='topicShortDescription'>
+                <Form.Group as={Row} className='mb-3' controlId='initiativeShortDescription'>
                   <Form.Label column sm='2'>
                     Short Description
                   </Form.Label>
@@ -196,41 +197,6 @@ const TopicAdd = () => {
                     </Form.Text>
                   </Col>
                 </Form.Group>
-
-                <Form.Group as={Row} className='mb-3' controlId='topicInitiativeFix'>
-                  <Form.Label column sm='2'>
-                    Initiative
-                  </Form.Label>
-                  <Form.Label column sm='10' className='text-muted'>
-                    Springboard
-                  </Form.Label>
-                </Form.Group>
-
-                <Form.Group as={Row} className='mb-3' controlId='topicInitiative'>
-                  <Form.Label column sm='2'>
-                    Initiative
-                  </Form.Label>
-                  <Col sm='10'>
-                    <Form.Select required defaultValue='Select an Initiative'>
-                      <option disabled>Select an Initiative</option>
-                      {initiativeData.initiative.map((initiative: any) => (
-                        <option key={initiative.id} value={initiative.id}>
-                          {initiative.name}
-                        </option>
-                      ))}
-                    </Form.Select>
-                    <Form.Text className='text-muted'>
-                      {initiativeData.initiative.map((initiative: any) => (
-                        <div key={initiative.id}>
-                          {initiative.name}: {initiative.description}
-                        </div>
-                      ))}
-                    </Form.Text>
-                    <Form.Control.Feedback type='invalid'>
-                      You cannot create an idea or challenge without selecting an initiative.
-                    </Form.Control.Feedback>
-                  </Col>
-                </Form.Group>
               </Form>
             </Col>
           </Row>
@@ -245,7 +211,7 @@ const TopicAdd = () => {
               <Button className='btn-sm me-2' variant='primary' onClick={() => setShowDiscard(true)}>
                 Discard
               </Button>
-              <Button className='btn-sm me-2' type='submit' form='AddTopicForm' variant='primary'>
+              <Button className='btn-sm me-2' type='submit' form='AddInitiativeForm' variant='primary'>
                 Submit
               </Button>
             </Col>
@@ -268,4 +234,4 @@ const TopicAdd = () => {
   );
 };
 
-export default TopicAdd;
+export default InitiativeAdd;

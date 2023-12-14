@@ -18,7 +18,41 @@
 }
 
 .card-stepper-container {
-  padding: 0 3%!important;
+  padding: 0 3% !important;
   height: 40px;
   width: calc(100% - 110px);
+}
+
+.card-img {
+  width: auto;
+  height: 100px;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card-title {
+  font-family: 'FWDCircularWeb Medium';
+  height: 49px;
+}
+
+.card-subtitle {
+  font-weight: normal;
+}
+
+.hide-long-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.hide-long-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 }
