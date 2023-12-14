@@ -12,7 +12,6 @@ const CreateTopic = () => {
       $author_id: String!
       $author_name: String!
       $author_email: String!
-      $initiative: Int!
     ) {
       insert_topics_one(
         object: {
@@ -26,7 +25,6 @@ const CreateTopic = () => {
           link: $link
           short_description: $short_description
           title: $title
-          initiative: $initiative
         }
       ) {
         id

@@ -197,15 +197,6 @@ const TopicAdd = () => {
                   </Col>
                 </Form.Group>
 
-                <Form.Group as={Row} className='mb-3' controlId='topicInitiativeFix'>
-                  <Form.Label column sm='2'>
-                    Initiative
-                  </Form.Label>
-                  <Form.Label column sm='10' className='text-muted'>
-                    Springboard
-                  </Form.Label>
-                </Form.Group>
-
                 <Form.Group as={Row} className='mb-3' controlId='topicInitiative'>
                   <Form.Label column sm='2'>
                     Initiative
