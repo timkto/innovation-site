@@ -16,9 +16,11 @@ import { TopicDepartment } from '../../enums/TopicDepartment';
 import { TopicCategory } from '../../enums/TopicCategory';
 import { TopicStatus } from '../../enums/TopicStatus';
 import { IGetTopicCollectionInput } from '../../interfaces/IGetTopicCollectionInput';
+import GetInitiatives from '../../graphql/GetInitiatives';
 
 const Topic = () => {
   let pageSize = parseInt(process.env.HOME_RECORDS_PAGE_SIZE || '5');
+
   const [pageActive, setPageActive] = useState(0);
   const [pageCount, setPageCount] = useState(1);
   const [searchFilter, setSearchFilter] = useState('');
@@ -29,6 +31,22 @@ const Topic = () => {
   const [categoryFilter, setCategoryFilter] = useState(
     Object.keys(TopicCategory).map(key => TopicCategory[key].id),
   );
+  const [initiativeFilter, setInitiativeFilter] = useState([
+    '4d8ca19a-4436-4140-804b-cb05adf858cc',
+    '36ff22fb-0f11-4704-abbe-675a2fedcb53',
+  ]);
+  const { data: initiativeData, error: initiativeError } = GetInitiatives();
+
+  if (initiativeError) {
+    console.error(initiativeError);
+    return <ServerRequestError height='500px' imgHeight='250px' width='100%' />;
+  }
+
+  // console.log(typeof initiativeData?.initiatives?.map((id: String) => id));
+
+  useEffect(() => {
+    console.log(initiativeData?.initiatives?.map((id: String) => id));
+  }, []);
 
   const {
     loading: topicsLoading,
@@ -41,7 +59,9 @@ const Topic = () => {
     categoryIdList: categoryFilter,
     departmentIdList: departmentFilter,
     statusIdList: statusFilter,
+    initiativeIdList: initiativeFilter,
   } as IGetTopicCollectionInput);
+
   const filteredTopics = useMemo(() => {
     if (!topicsData?.topics?.length) return [];
     return searchFilter
@@ -58,7 +78,7 @@ const Topic = () => {
 
   useEffect(() => {
     setPageActive(0);
-  }, [searchFilter, statusFilter, departmentFilter, categoryFilter]);
+  }, [searchFilter, statusFilter, departmentFilter, categoryFilter, initiativeFilter]);
 
   if (topicsLoading)
     return (
@@ -68,6 +88,7 @@ const Topic = () => {
           onChangeDepartment={setDepartmentFilter}
           onChangeCategory={setCategoryFilter}
           onChangeStatus={setStatusFilter}
+          onChangeInitiative={setInitiativeFilter}
         />
         <SectionLoader height='500px' width='100%' />
       </Container>
@@ -86,6 +107,7 @@ const Topic = () => {
           onChangeDepartment={setDepartmentFilter}
           onChangeCategory={setCategoryFilter}
           onChangeStatus={setStatusFilter}
+          onChangeInitiative={setInitiativeFilter}
         />
         <NoRecordsFound height='500px' imgHeight='250px' width='100%' />
       </Container>
@@ -101,6 +123,7 @@ const Topic = () => {
         onChangeDepartment={setDepartmentFilter}
         onChangeCategory={setCategoryFilter}
         onChangeStatus={setStatusFilter}
+        onChangeInitiative={setInitiativeFilter}
       />
       <Row className='max-width-fwd mx-auto'>
         <Col xs={12} className='mb-5 p-0'>

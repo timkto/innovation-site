@@ -3,7 +3,7 @@ import { GET_TOPIC_BY_PK } from './GetTopicByPk';
 
 const ChangeTopicStep = (topics_pk: string, users_pk: string) => {
   const changeTopicStepsQuery = gql`
-    mutation Update($topics_pk: uuid!, $step_inc: Int!) {
+    mutation Update($topics_pk: String!, $step_inc: Int!) {
       update_topics_by_pk(pk_columns: { id: $topics_pk }, _inc: { status: $step_inc }) {
         status
       }

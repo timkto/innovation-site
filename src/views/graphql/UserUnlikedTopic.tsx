@@ -3,7 +3,7 @@ import { GET_TOPIC_BY_PK } from './GetTopicByPk';
 
 const UserUnlikedTopic = (topics_pk: string, users_pk: string) => {
   const userUnlikedQuery = gql`
-    mutation UserUnlikedTopic($topics_pk: uuid!, $users_pk: String!) {
+    mutation UserUnlikedTopic($topics_pk: String!, $users_pk: String!) {
       delete_topics_users_likes_association_by_pk(topics_pk: $topics_pk, users_pk: $users_pk) {
         topics_pk
       }

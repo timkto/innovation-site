@@ -5,7 +5,7 @@ import { GET_TOPIC_BY_PK } from './GetTopicByPk';
 const UserLikedTopic = (topics_pk: string, users_pk: string, user_name: string, user_email: string) => {
   const userLikedQuery = gql`
     mutation UserLikedTopic(
-      $topics_pk: uuid!
+      $topics_pk: String!
       $users_pk: String!
       $user_name: String!
       $user_email: String!

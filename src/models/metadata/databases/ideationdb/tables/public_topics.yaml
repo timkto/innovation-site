@@ -5,6 +5,9 @@ object_relationships:
 - name: author_details
   using:
     foreign_key_constraint_on: author
+- name: initiative_details
+  using:
+    foreign_key_constraint_on: initiative
 array_relationships:
 - name: topics_users_comments_associations
   using:
@@ -35,6 +38,7 @@ insert_permissions:
     - short_description
     - status
     - title
+    - initiative
   role: user
 select_permissions:
 - permission:
@@ -51,6 +55,7 @@ select_permissions:
     - created_at
     - updated_at
     - id
+    - initiative
     filter: {}
   role: user
 update_permissions:

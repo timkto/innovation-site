@@ -1,0 +1,65 @@
+table:
+  name: initiatives
+  schema: public
+object_relationships:
+  - name: author_details
+    using:
+      foreign_key_constraint_on: author
+array_relationships:
+  - name: initiative_topics
+    using:
+      foreign_key_constraint_on:
+        column: initiative
+        table:
+          name: topics
+          schema: public
+insert_permissions:
+  - permission:
+      backend_only: false
+      check:
+        author:
+          _eq: X-Hasura-User-Id
+      columns:
+        - title
+        - description
+        - screen_name
+        - category
+        - department
+        - status
+        - link
+        - author
+    role: user
+select_permissions:
+  - permission:
+      allow_aggregations: true
+      columns:
+        - id
+        - created_at
+        - updated_at
+        - title
+        - description
+        - screen_name
+        - category
+        - department
+        - status
+        - link
+        - author
+      filter: {}
+    role: user
+update_permissions:
+  - permission:
+      check:
+        author:
+          _eq: X-Hasura-User-Id
+      columns:
+        - status
+      filter:
+        author:
+          _eq: X-Hasura-User-Id
+    role: user
+delete_permissions:
+  - permission:
+      filter:
+        author:
+          _eq: X-Hasura-User-Id
+    role: user

@@ -23,6 +23,7 @@ import './topic-details.scss';
 const TopicDetails = (props: any) => {
   const auth: IAuth = useContext(AuthContext);
   const history = useHistory();
+  console.log(props.match.params);
   const topics_pk = props.match.params.uuid;
   const users_pk = auth.user.id || '';
   const users_name = auth.user?.name || '';
@@ -100,8 +101,8 @@ const TopicDetails = (props: any) => {
                     rounded
                     fluid
                   />
-                  <input type='file' accept='image/*' id='edit-idea-img' hidden />
-                  <label htmlFor='edit-idea-img'>Upload</label>
+                  {/* <input type='file' accept='image/*' id='edit-idea-img' hidden />
+                  <label htmlFor='edit-idea-img'>Upload</label> */}
                 </Stack>
 
                 <Badge bg='primary' className='me-1'>
@@ -109,6 +110,9 @@ const TopicDetails = (props: any) => {
                 </Badge>
                 <Badge bg='success' className='me-1'>
                   Department : {` ${getTopicDepartmentById(topicData.topics_by_pk.department).name} `}
+                </Badge>
+                <Badge bg='warning' className='me-1'>
+                  Initiative : {` ${topicData.topics_by_pk.initiative_details.screen_name} `}
                 </Badge>
                 <Badge bg='danger' className='me-1'>
                   Owner : {` ${topicData.topics_by_pk.author_details.name} `}

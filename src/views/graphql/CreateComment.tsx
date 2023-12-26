@@ -4,7 +4,7 @@ import { GET_TOPIC_BY_PK } from './GetTopicByPk';
 const CreateComment = (topics_pk: string, users_pk: string, users_name: string) => {
   const createCommentQuery = gql`
     mutation CreateComment(
-      $topics_pk: uuid!
+      $topics_pk: String!
       $users_pk: String!
       $users_name: String!
       $users_email: String!

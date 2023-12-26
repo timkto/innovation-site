@@ -7,3 +7,4 @@
 - "!include public_topics_users_comments_association.yaml"
 - "!include public_topics_users_likes_association.yaml"
 - "!include public_users.yaml"
+- "!include public_initiatives.yaml"

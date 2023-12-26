@@ -38,11 +38,12 @@ const InitiativeAdd = () => {
       //   ? form.elements.topicShortDescription.value
       //   : form.elements.topicDescription.value.substring(0, 240);
       const formValues = {
-        name: form.elements.initiativeName.value,
         title: form.elements.initiativeTitle.value,
+        screen_name: form.elements.initiativeScreenName.value,
         description: form.elements.initiativeDescription.value,
         category: form.elements.initiativeCategory.value,
         department: form.elements.initiativeDepartment.value,
+        link: form.elements.initiativeLink.value,
       };
       const userValues = {
         author_id: auth.user.id,
@@ -80,17 +81,9 @@ const InitiativeAdd = () => {
                 noValidate
                 validated={validated}
                 onSubmit={handleAddFormSubmit}>
-                <Form.Group as={Row} className='mb-3' controlId='initiativeName'>
-                  <Form.Label column sm='2'>
-                    Name
-                  </Form.Label>
-                  <Col sm='10'>
-                    <Form.Control required placeholder='Enter name' />
-                    <Form.Control.Feedback type='invalid'>
-                      A name is required for creating a new idea or challenge.
-                    </Form.Control.Feedback>
-                  </Col>
-                </Form.Group>
+                <div style={{ fontFamily: 'FWDCircularWeb Medium', fontSize: '32px', margin: '20px auto' }}>
+                  Create New Initiative
+                </div>
 
                 <Form.Group as={Row} className='mb-3' controlId='initiativeTitle'>
                   <Form.Label column sm='2'>
@@ -100,6 +93,18 @@ const InitiativeAdd = () => {
                     <Form.Control required placeholder='Enter title' />
                     <Form.Control.Feedback type='invalid'>
                       A title is required for creating a new idea or challenge.
+                    </Form.Control.Feedback>
+                  </Col>
+                </Form.Group>
+
+                <Form.Group as={Row} className='mb-3' controlId='initiativeScreenName'>
+                  <Form.Label column sm='2'>
+                    Screen Name
+                  </Form.Label>
+                  <Col sm='10'>
+                    <Form.Control required placeholder='Enter screen name' />
+                    <Form.Control.Feedback type='invalid'>
+                      A screen name is required for creating a new idea or challenge.
                     </Form.Control.Feedback>
                   </Col>
                 </Form.Group>
@@ -178,25 +183,6 @@ const InitiativeAdd = () => {
                     </Form.Text>
                   </Col>
                 </Form.Group>
-
-                <Form.Group as={Row} className='mb-3' controlId='initiativeShortDescription'>
-                  <Form.Label column sm='2'>
-                    Short Description
-                  </Form.Label>
-                  <Col sm='10'>
-                    <Form.Control
-                      as='textarea'
-                      maxLength={240}
-                      rows={2}
-                      placeholder='Enter a short description (Optional)'
-                    />
-                    <Form.Text className='text-muted'>
-                      Write a crisp version of the description in 240 characters to captivate readers browsing
-                      on the home page. If not provided, description would be shortened and presented in the
-                      list.
-                    </Form.Text>
-                  </Col>
-                </Form.Group>
               </Form>
             </Col>
           </Row>
@@ -207,7 +193,7 @@ const InitiativeAdd = () => {
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Container fluid className='position-fixed button-action-bar'>
           <Row>
-            <Col style={{ paddingTop: '10px' }}>
+            <Col style={{ paddingTop: '10px', textAlign: 'center' }}>
               <Button className='btn-sm me-2' variant='primary' onClick={() => setShowDiscard(true)}>
                 Discard
               </Button>

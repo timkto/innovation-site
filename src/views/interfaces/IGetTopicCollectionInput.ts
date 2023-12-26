@@ -5,4 +5,5 @@ export interface IGetTopicCollectionInput {
   categoryIdList: Array<number>;
   statusIdList: Array<number>;
   departmentIdList: Array<number>;
+  initiativeIdList: Array<string>;
 }

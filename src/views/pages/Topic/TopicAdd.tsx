@@ -53,7 +53,6 @@ const TopicAdd = () => {
         link: form.elements.topicLink.value,
         short_description: formShortDescription,
         title: form.elements.topicTitle.value,
-        initiative: form.elements.topicInitiative.value,
       };
       const userValues = {
         author_id: auth.user.id,
@@ -61,7 +60,16 @@ const TopicAdd = () => {
         author_email: auth.user.email,
       };
 
-      createTopic({ variables: { ...formValues, ...userValues } })
+      const initiativeValues = {
+        initiative_id: form.elements.topicInitiative.value,
+        initiative_title: form.elements.topicInitiative.value,
+        initiative_description: form.elements.topicInitiative.value,
+        initiative_screen_name: form.elements.topicInitiative.value,
+        initiative_category: form.elements.topicInitiative.value,
+        initiative_department: form.elements.topicInitiative.value,
+      };
+
+      createTopic({ variables: { ...formValues, ...userValues, ...initiativeValues } })
         .then(_ => history.push(RouterPath.Topic))
         .catch(_ => {
           setLoading(false);
@@ -85,6 +93,10 @@ const TopicAdd = () => {
         <Container>
           <Row className='mt-4 max-width-960 mx-auto'>
             <Col>
+              <div style={{ fontFamily: 'FWDCircularWeb Medium', fontSize: '32px', margin: '20px auto' }}>
+                Create New Idea
+              </div>
+
               <Form
                 id='AddTopicForm'
                 className='mb-5 pb-2'
@@ -204,18 +216,20 @@ const TopicAdd = () => {
                   <Col sm='10'>
                     <Form.Select required defaultValue='Select an Initiative'>
                       <option disabled>Select an Initiative</option>
-                      {initiativeData.initiative.map((initiative: any) => (
-                        <option key={initiative.id} value={initiative.id}>
-                          {initiative.name}
-                        </option>
-                      ))}
+                      {initiativeData.initiatives &&
+                        initiativeData.initiatives.map((initiative: any) => (
+                          <option key={initiative.id} value={initiative.id}>
+                            {initiative.screen_name}
+                          </option>
+                        ))}
                     </Form.Select>
                     <Form.Text className='text-muted'>
-                      {initiativeData.initiative.map((initiative: any) => (
-                        <div key={initiative.id}>
-                          {initiative.name}: {initiative.description}
-                        </div>
-                      ))}
+                      {initiativeData.initiatives &&
+                        initiativeData.initiatives.map((initiative: any) => (
+                          <div key={initiative.id}>
+                            {initiative.screen_name}: {initiative.description}
+                          </div>
+                        ))}
                     </Form.Text>
                     <Form.Control.Feedback type='invalid'>
                       You cannot create an idea or challenge without selecting an initiative.
@@ -232,7 +246,7 @@ const TopicAdd = () => {
       <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Container fluid className='position-fixed button-action-bar'>
           <Row>
-            <Col style={{ paddingTop: '10px' }}>
+            <Col style={{ paddingTop: '10px', textAlign: 'center' }}>
               <Button className='btn-sm me-2' variant='primary' onClick={() => setShowDiscard(true)}>
                 Discard
               </Button>

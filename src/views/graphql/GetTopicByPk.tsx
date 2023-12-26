@@ -1,7 +1,7 @@
 import { useQuery, gql } from '@apollo/client';
 
 export const GET_TOPIC_BY_PK = gql`
-  query GetTopicByPk($topics_pk: uuid!, $users_pk: String!) {
+  query GetTopicByPk($topics_pk: String!, $users_pk: String!) {
     topics_by_pk(id: $topics_pk) {
       title
       category
@@ -14,6 +14,11 @@ export const GET_TOPIC_BY_PK = gql`
         id
         name
         email
+      }
+      initiative_details {
+        id
+        screen_name
+        title
       }
       userLiked: topics_users_likes_associations_aggregate(
         where: { topics_pk: { _eq: $topics_pk }, users_pk: { _eq: $users_pk } }

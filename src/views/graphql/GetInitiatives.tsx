@@ -2,10 +2,10 @@ import { useQuery, gql } from '@apollo/client';
 
 export const GET_INITIATIVES = gql`
   query Initiatives {
-    initiative(order_by: { updated_at: desc }) {
+    initiatives(order_by: { updated_at: desc }) {
       id
-      name
       title
+      screen_name
       description
     }
   }

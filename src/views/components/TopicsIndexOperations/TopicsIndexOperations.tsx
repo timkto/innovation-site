@@ -12,12 +12,14 @@ import { TopicDepartment } from '../../enums/TopicDepartment';
 import { TopicCategory } from '../../enums/TopicCategory';
 import { RouterPath } from '../../enums/RouterPath';
 import './topics-index-operations.scss';
+import { TopicInitiative } from '../../enums/TopicInitiative';
 
 interface ITopicsIndexOperations {
   onClickSearchInput: (value: string) => void;
   onChangeDepartment: (value: number[]) => void;
   onChangeCategory: (value: number[]) => void;
   onChangeStatus: (value: number[]) => void;
+  onChangeInitiative: (value: string[]) => void;
 }
 
 const TopicsIndexOperations: React.FC<ITopicsIndexOperations> = ({
@@ -25,6 +27,7 @@ const TopicsIndexOperations: React.FC<ITopicsIndexOperations> = ({
   onChangeDepartment,
   onChangeCategory,
   onChangeStatus,
+  onChangeInitiative,
 }) => {
   const triggerSearch = (event: any) => {
     event.preventDefault();
@@ -90,7 +93,9 @@ const TopicsIndexOperations: React.FC<ITopicsIndexOperations> = ({
           ['All Categories', TopicCategory, onChangeCategory],
           ['All Departments', TopicDepartment, onChangeDepartment],
           ['All Statuses', TopicStatus, onChangeStatus],
+          ['All Initiatives', TopicInitiative, onChangeInitiative],
         ].map(item => {
+          console.log(item);
           const filterOn: any = item[0];
           const filterOptions: any = item[1];
           const changeAction: any = item[2];

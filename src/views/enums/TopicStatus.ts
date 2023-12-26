@@ -22,5 +22,6 @@ export const TopicStatus: { [key: string]: { id: number; name: string } } = {
 };
 
 export const getTopicStatusById = (id: number) => {
+  console.log(TopicStatus[Object.keys(TopicStatus)[id]]);
   return TopicStatus[Object.keys(TopicStatus)[id]];
 };
