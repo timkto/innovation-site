@@ -34,10 +34,8 @@ const InitiativeAdd = () => {
       event.stopPropagation();
     } else {
       setLoading(true);
-      // const formShortDescription = form.elements.topicShortDescription.value
-      //   ? form.elements.topicShortDescription.value
-      //   : form.elements.topicDescription.value.substring(0, 240);
       const formValues = {
+        key: form.elements.initiativeKey.value,
         title: form.elements.initiativeTitle.value,
         screen_name: form.elements.initiativeScreenName.value,
         description: form.elements.initiativeDescription.value,
@@ -84,6 +82,18 @@ const InitiativeAdd = () => {
                 <div style={{ fontFamily: 'FWDCircularWeb Medium', fontSize: '32px', margin: '20px auto' }}>
                   Create New Initiative
                 </div>
+
+                <Form.Group as={Row} className='mb-3' controlId='initiativeKey'>
+                  <Form.Label column sm='2'>
+                    Key
+                  </Form.Label>
+                  <Col sm='10'>
+                    <Form.Control required placeholder='Enter key' />
+                    <Form.Control.Feedback type='invalid'>
+                      A key is required for creating a new idea or challenge.
+                    </Form.Control.Feedback>
+                  </Col>
+                </Form.Group>
 
                 <Form.Group as={Row} className='mb-3' controlId='initiativeTitle'>
                   <Form.Label column sm='2'>

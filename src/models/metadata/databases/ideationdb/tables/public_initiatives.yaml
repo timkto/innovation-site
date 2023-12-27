@@ -20,6 +20,7 @@ insert_permissions:
         author:
           _eq: X-Hasura-User-Id
       columns:
+        - key
         - title
         - description
         - screen_name
@@ -36,6 +37,7 @@ select_permissions:
         - id
         - created_at
         - updated_at
+        - key
         - title
         - description
         - screen_name

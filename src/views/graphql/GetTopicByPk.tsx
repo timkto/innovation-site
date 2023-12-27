@@ -17,8 +17,13 @@ export const GET_TOPIC_BY_PK = gql`
       }
       initiative_details {
         id
-        screen_name
+        key
         title
+        screen_name
+        description
+        category
+        department
+        link
       }
       userLiked: topics_users_likes_associations_aggregate(
         where: { topics_pk: { _eq: $topics_pk }, users_pk: { _eq: $users_pk } }

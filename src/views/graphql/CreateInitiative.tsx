@@ -3,6 +3,7 @@ import { gql, useMutation } from '@apollo/client';
 const CreateInitiative = () => {
   const createInitiativeQuery = gql`
     mutation CreateInitiative(
+      $key: String!
       $title: String!
       $screen_name: String!
       $description: String!
@@ -15,6 +16,7 @@ const CreateInitiative = () => {
     ) {
       insert_initiatives_one(
         object: {
+          key: $key
           title: $title
           screen_name: $screen_name
           description: $description

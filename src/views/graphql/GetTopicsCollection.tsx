@@ -9,7 +9,6 @@ export const GET_TOPIC_COLLECTION = gql`
     $departmentIdList: [Int!]
     $categoryIdList: [Int!]
     $statusIdList: [Int!]
-    $initiativeIdList: [String!]
   ) {
     topics(
       limit: $limit
@@ -20,7 +19,6 @@ export const GET_TOPIC_COLLECTION = gql`
           department: { _in: $departmentIdList }
           category: { _in: $categoryIdList }
           status: { _in: $statusIdList }
-          initiative: { _in: $initiativeIdList }
         }
       }
       order_by: { updated_at: desc }
@@ -51,7 +49,6 @@ export const GET_TOPIC_COLLECTION = gql`
           department: { _in: $departmentIdList }
           category: { _in: $categoryIdList }
           status: { _in: $statusIdList }
-          initiative: { _in: $initiativeIdList }
         }
       }
     ) {

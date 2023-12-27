@@ -46,6 +46,7 @@ const TopicAdd = () => {
       const formShortDescription = form.elements.topicShortDescription.value
         ? form.elements.topicShortDescription.value
         : form.elements.topicDescription.value.substring(0, 240);
+
       const formValues = {
         category: form.elements.topicCategory.value,
         department: form.elements.topicDepartment.value,
@@ -53,6 +54,7 @@ const TopicAdd = () => {
         link: form.elements.topicLink.value,
         short_description: formShortDescription,
         title: form.elements.topicTitle.value,
+        initiative: form.elements.topicInitiative.value,
       };
       const userValues = {
         author_id: auth.user.id,
@@ -60,13 +62,18 @@ const TopicAdd = () => {
         author_email: auth.user.email,
       };
 
+      const initiative = initiativeData.initiatives.filter(
+        (initiative: any) => initiative.id === form.elements.topicInitiative.value,
+      )[0];
+
       const initiativeValues = {
-        initiative_id: form.elements.topicInitiative.value,
-        initiative_title: form.elements.topicInitiative.value,
-        initiative_description: form.elements.topicInitiative.value,
-        initiative_screen_name: form.elements.topicInitiative.value,
-        initiative_category: form.elements.topicInitiative.value,
-        initiative_department: form.elements.topicInitiative.value,
+        initiative_id: initiative.id,
+        initiative_key: initiative.key,
+        initiative_title: initiative.title,
+        initiative_description: initiative.description,
+        initiative_screen_name: initiative.screen_name,
+        initiative_category: initiative.category,
+        initiative_department: initiative.department,
       };
 
       createTopic({ variables: { ...formValues, ...userValues, ...initiativeValues } })
