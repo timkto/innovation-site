@@ -14,6 +14,7 @@ import { RouterPath } from './enums/RouterPath';
 import './index.scss';
 import Springboard from './pages/Springboard/Springboard';
 import InitiativeAdd from './pages/Initiative/InitiativeAdd';
+import Initiative from './pages/Initiative/Initiative';
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
             <Route exact path={RouterPath.Home} component={Home} />
             <Route path={RouterPath.Springboard} component={Springboard} />
             <Route path={RouterPath.InitiativeAdd} component={InitiativeAdd} />
+            <Route path={RouterPath.Initiative} component={Initiative} />
           </Switch>
         </Router>
       </ApolloProvider>

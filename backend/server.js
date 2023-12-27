@@ -2,9 +2,11 @@
 const express = require('express');
 const sqlite3 = require('sqlite3');
 const { open } = require('sqlite');
+const cors = require('cors');
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 // Open SQLite database
 const dbPromise = open({
@@ -73,7 +75,7 @@ app.delete('/data/:key', async (req, res) => {
 });
 
 // Start server
-const PORT = 3000;
+const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

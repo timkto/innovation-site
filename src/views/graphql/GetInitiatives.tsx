@@ -4,9 +4,12 @@ export const GET_INITIATIVES = gql`
   query Initiatives {
     initiatives(order_by: { updated_at: desc }) {
       id
+      key
       title
       screen_name
       description
+      category
+      department
     }
   }
 `;

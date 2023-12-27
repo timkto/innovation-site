@@ -5,5 +5,6 @@ export enum RouterPath {
   TopicDetails = '/topic/:uuid/',
   Reports = '/reports/',
   Springboard = '/springboard/',
+  Initiative = '/initiative/:key/',
   InitiativeAdd = '/initiative/add/',
 }

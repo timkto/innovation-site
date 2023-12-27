@@ -42,12 +42,6 @@ const Topic = () => {
     return <ServerRequestError height='500px' imgHeight='250px' width='100%' />;
   }
 
-  // console.log(typeof initiativeData?.initiatives?.map((id: String) => id));
-
-  useEffect(() => {
-    console.log(initiativeData?.initiatives?.map((id: String) => id));
-  }, []);
-
   const {
     loading: topicsLoading,
     data: topicsData,

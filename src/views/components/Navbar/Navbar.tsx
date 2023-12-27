@@ -38,7 +38,7 @@ const Navbar = () => {
             <Link to={RouterPath.Springboard} style={linkStyles}>
               Springboard
             </Link>
-            <Link to={RouterPath.Home} style={linkStyles}>
+            {/* <Link to={RouterPath.Home} style={linkStyles}>
               Innovation Team
             </Link>
             <Link to={RouterPath.Home} style={linkStyles}>
@@ -49,9 +49,9 @@ const Navbar = () => {
             </Link>
             <Link to={RouterPath.Home} style={linkStyles}>
               Champions & Community
-            </Link>
-            <Link to={RouterPath.Home} style={linkStyles}>
-              Resources
+            </Link> */}
+            <Link to={RouterPath.Initiative} style={linkStyles}>
+              Initiatives
             </Link>
             <Link to={RouterPath.InitiativeAdd} style={linkStyles}>
               Initiative

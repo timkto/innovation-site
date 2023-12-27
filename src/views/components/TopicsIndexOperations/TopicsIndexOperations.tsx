@@ -95,7 +95,6 @@ const TopicsIndexOperations: React.FC<ITopicsIndexOperations> = ({
           ['All Statuses', TopicStatus, onChangeStatus],
           ['All Initiatives', TopicInitiative, onChangeInitiative],
         ].map(item => {
-          console.log(item);
           const filterOn: any = item[0];
           const filterOptions: any = item[1];
           const changeAction: any = item[2];
